@@ -46,13 +46,7 @@ important that you do it correctly.
 
 # Project Needs
 
-1. Come up with a plan of attack, including a general expected order of
-   execution, database schema (include attribute names and data types), and
-   relationships. Do your best to isolate features. If you want to, you can go
-   the "agile" route wherein you build out a feature to the point where it is
-   usable from the interface before you go forward, or you can separate your
-   models phase and your driver phase.
-2. Use feature branches, issues, Waffle, etc., to plan your work
+1. Use feature branches, issues, Waffle, etc., to plan your work
 3. Do not do any work on the master branch
 4. All of your models have tests for validations as well as any custom methods
    that don't save to the database. Do not save to the database (either by
