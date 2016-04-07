@@ -1,0 +1,12 @@
+development: 
+  host: 'localhost'
+  adapter: 'postgresql'
+  database: 'week-four-library'
+  encoding: 'utf8'
+  pool: 5
+test: 
+  host: 'localhost'
+  adapter: 'postgresql'
+  database: 'week-four-library-test'
+  encoding: 'utf8'
+  pool: 5

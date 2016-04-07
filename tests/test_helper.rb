@@ -1,0 +1,7 @@
+require "minitest/autorun"
+require "minitest/rg"
+require "sinatra/activerecord"
+require_relative "../lib/book.rb"
+require_relative "../lib/patron.rb"
+require_relative "../lib/library.rb"
+require_relative "../lib/staff_member.rb"
