@@ -36,14 +36,13 @@ important that you do it correctly.
    check out or return one book at a time (and have no restriction on how many
    total books they can check out). A user should be able to look up a patron
    and see what books they have checked out, if any.
-5. We need a clean driver that we can use, in regular and predictable fashion,
+5. We need a clean Sinatra application that we can use, in regular and predictable fashion,
    to interact with our various records. This means that each type of record
    needs, at bare minimum:
    + an index (this is your default)
    + a way to make new records
    + a way to view individual records
    + a way to edit individual records
-   + a way to destroy records
 
 # Project Needs
 
@@ -87,23 +86,26 @@ important that you do it correctly.
    be *aviailable*, *checked out*, or *returned and waiting to be filed* (come
    up with your own ways to phrase this). Upon being returned by a patron, a
    book needs to be re-shelved by a staff member.
+   + Learn how to use Named Scopes (see "Active Record Querying"). Can you
+     define a named scope -- something like `Book.checked_out` to supplement
+     `Book.all`?
 4. Library Analytics are real and here! Find a way to keep track of the number
    of times a book has been checked out.
 5. Create a `seeds.rb` file that checks to see if any records exist, and if not,
-   auto-populates the database with records of the varying types.
+   auto-populates the database with records of the varying types. You should be
+   able to run it with `rake db:seed`
 6. Add in tests for methods that require you to save records. In those tests,
    call `.destroy` on those records so they are not preserved. Your tests should
    still be self-contained.
 7. Do some research into *static code analysis* with CodeClimate. Set up your
    project so that your pull requests are analyzed by CodeClimate. You should
    only need the free plan for this.
-8. Create a book club: a given book club takes place at a library, features a
-   book, and is attended by many patrons. Patrons can only belong to one book
-   club at a time. Multiple book clubs can happen at a library, and multiple
-   book clubs can be about the same book.
 9. For your book club, add in a facilitating staff member. Staff members should
    only be able to facilitate book clubs at their branch.
-10. **Advanced**: We want our staff to be able to belong to more than one branch
-    at a time (some staff members split branches). Research *many-to-many*
-    relationships and replace the one-to-many relationship between staff and
-    library branches with a many-to-many relationships.
+10. **Semi-Advanced**: Learn how to use Bootstrap to add some styling to your
+    application. You'll need to [set it up with the
+    CDN](http://getbootstrap.com/getting-started/#download-cdn) (include those
+    lines in your `layout.erb` in the `<head>` tag).
+10. **Advanced:** Learn where to put your custom CSS scripts. Can you define custom CSS? This
+    will require that you know how to use CSS.
+
