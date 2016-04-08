@@ -8,7 +8,6 @@ require_relative "lib/library.rb"
 require_relative "lib/patron.rb"
 require_relative "lib/staff_member.rb"
 
-#binding.pry
 
 get '/' do
   erb :main_menu
@@ -18,10 +17,6 @@ end
 #   Libraries             ############################### Libraries
 get '/libraries' do
   erb :libraries_menu
-end
-
-get '/libraries/list_of_libraries' do
-  erb :list_of_libraries
 end
 
 get '/libraries/list_of_staff_members' do
@@ -44,6 +39,24 @@ get '/libraries/edit_library' do
   erb :edit_library
 end
 
+# Show
+get '/library/:id' do
+    @libraries = Library.find_by_id(params['id'])
+  erb :id_library
+end
+
+# Index
+get '/libraries/list_of_libraries' do
+  @libraries = Library.all
+  erb :list_of_libraries
+end
+
+# New
+get '/libraries/new' do
+  @library = Library.new
+  erb :add_new_library
+end
+
 ###############################
 #   Books                 ############################### Books
 get '/books' do
@@ -64,6 +77,18 @@ end
 
 get '/books/edit_book' do
   erb :edit_book
+end
+
+# Show
+get '/book/:id' do
+    @books = Book.find_by_id(params['id'])
+  erb :id_book
+end
+
+# Index
+get '/books/list_of_books' do
+  @books = Book.all
+  erb :list_of_books
 end
 
 ###############################
@@ -97,3 +122,5 @@ end
 get '/patrons/edit_patron' do
   erb :edit_patron
 end
+
+# binding.pry

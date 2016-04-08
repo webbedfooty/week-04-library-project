@@ -6,7 +6,6 @@
 
 </head>
 <body>
-<h2>Add New Library</h2>
 
 <p><a href="/libraries">Libraries  /   </a>
 <a href="/books">Books  /   </a>
@@ -14,8 +13,20 @@
 <a href="/patrons">Patrons  /   </a>
 <a href="/">Back to Main Menu</a></p>
 <p></p>
+<h2>Add New Library</h2>
 <p></p>
-# link goes here
+
+<form action="/libraries/<%= @library.id %>" method="post">
+Branch Name:<input type="text" name="Branch Name" value="<%= @library.branch_name %>"></br>
+Address:<input type="text", name="Address" value="<%= @library.address %>"></br>
+Phone Number:<input type="text", name="Phone Number" value="<%= @library.phone_number %>"></br>
+<select name="library_id">
+
+</select>
+
+<input type="submit" value="New Library!">
+</form>
+
 
 </body>
 </html>

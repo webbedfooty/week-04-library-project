@@ -6,9 +6,9 @@
 
 class Library < ActiveRecord::Base
 
-  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :branch_name, presence: true, uniqueness: {case_sensitive: false}
   validates :address, presence: true, uniqueness: {case_sensitive: false}
-  validates :phone, presence: true, uniqueness: true
+  validates :phone_number, presence: true, uniqueness: true
 
   has_many :staff_members
   has_many :books

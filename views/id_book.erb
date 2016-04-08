@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Reassign Staff Member</title>
+<title>List of Books</title>
 
 </head>
 <body>
@@ -13,9 +13,14 @@
 <a href="/patrons">Patrons  /   </a>
 <a href="/">Back to Main Menu</a></p>
 <p></p>
-<h2>Reassign Staff Member</h2>
+<h2>List of Books</h2>
 <p></p>
-# list or link
+<ul>
 
-</body>
-</html>
+
+<p>Title<%=@books.title%></p>
+
+<p>Address: <%=@books.author%></p>
+<p>Phone Number: <%=@books.isbn%></p>
+
+</ul>
