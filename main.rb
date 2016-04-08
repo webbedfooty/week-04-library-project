@@ -14,6 +14,7 @@ get '/' do
   erb :main_menu
 end
 
+###############################
 #   Libraries             ############################### Libraries
 get '/libraries' do
   erb :libraries_menu
@@ -24,7 +25,7 @@ get '/libraries/list_of_libraries' do
 end
 
 get '/libraries/list_of_staff_members' do
-  erb :list_of_libraries
+  erb :list_of_staff_members
 end
 
 get '/libraries/reassign_staff_member' do
@@ -43,6 +44,7 @@ get '/libraries/edit_library' do
   erb :edit_library
 end
 
+###############################
 #   Books                 ############################### Books
 get '/books' do
   erb :books_menu
@@ -64,12 +66,34 @@ get '/books/edit_book' do
   erb :edit_book
 end
 
+###############################
 #   Staff Members         ############################### Staff Members
 get '/staff_members' do
   erb :staff_members_menu
 end
 
+get '/staff_members/add_new_staff_member' do
+  erb :add_new_staff_member
+end
+
+get '/staff_members/edit_staff_member' do
+  erb :edit_staff_member
+end
+
+###############################
 #   Patrons               ############################### Patrons
 get '/patrons' do
   erb :patrons_menu
+end
+
+get '/patrons/list_of_patrons' do
+  erb :list_of_patrons
+end
+
+get '/patrons/add_new_patron' do
+  erb :add_new_patron
+end
+
+get '/patrons/edit_patron' do
+  erb :edit_patron
 end
