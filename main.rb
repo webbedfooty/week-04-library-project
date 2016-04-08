@@ -56,6 +56,13 @@ get '/books/check_out_books' do
   erb :check_out_books
 end
 
+get '/books/add_new_book' do
+  erb :add_new_book
+end
+
+get '/books/edit_book' do
+  erb :edit_book
+end
 
 #   Staff Members         ############################### Staff Members
 get '/staff_members' do
