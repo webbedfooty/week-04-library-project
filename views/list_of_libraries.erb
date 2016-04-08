@@ -13,17 +13,17 @@
 <a href="/patrons">Patrons  /   </a>
 <a href="/">Back to Main Menu</a></p>
 <p></p>
-<p></p>
-
 <h2>List of Libraries</h2>
+<p></p>
 <ul>
   <% @libraries.each do |l| %>
-    <li><a href="/library/<%=l.id%>"Branch # <%=l.id%></br><%=l.branch_name%></a>
+    <li><a href="/libraries/<%=l.id%>"Branch # <%=l.id%></br><%=l.branch_name%></a>
       </br><%=l.address%></br><%=l.phone_number%></li>
   <% end %>
 </ul>
 
 
+<p><a href="/libraries/add_new_library">Add New Library</a></p>
 
 </body>
 </html>

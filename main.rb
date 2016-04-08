@@ -31,18 +31,19 @@ get '/libraries/reassign_book' do
   erb :reassign_book
 end
 
+# New
 get '/libraries/add_new_library' do
+  @library = Library.new
   erb :add_new_library
 end
 
-get '/libraries/edit_library' do
-  erb :edit_library
-end
-
-# Show
-get '/library/:id' do
-    @libraries = Library.find_by_id(params['id'])
-  erb :id_library
+post '/libraries' do
+  @library = Library.new(params)
+  if @library.save
+    redirect to("/libraries/list_of_libraries")
+  else
+    erb :add_new_library
+  end
 end
 
 # Index
@@ -51,20 +52,33 @@ get '/libraries/list_of_libraries' do
   erb :list_of_libraries
 end
 
-# New
-get '/libraries/new' do
-  @library = Library.new
-  erb :add_new_library
+# Edit
+get '/libraries/:id/edit_library' do
+    @library = Library.find_by_id(params['id'])
+  erb :edit_library
 end
+
+post '/libraries/:id' do
+  @library = Library.find_by_id(params['id'])
+  if @library.update_attributes(branch_name: params['branch_name'],
+      address: params['address'], phone_number: params['phone_number'])
+    redirect to("/libraries/#{@library.id}")
+  else
+    erb :edit_library
+  end
+end
+
+# Show
+get '/libraries/:id' do
+    @libraries = Library.find_by_id(params['id'])
+  erb :id_library
+end
+
 
 ###############################
 #   Books                 ############################### Books
 get '/books' do
   erb :books_menu
-end
-
-get '/books/list_of_books' do
-  erb :list_of_books
 end
 
 get '/books/check_out_books' do
@@ -81,7 +95,7 @@ end
 
 # Show
 get '/book/:id' do
-    @books = Book.find_by_id(params['id'])
+  @books = Book.find_by_id(params['id'])
   erb :id_book
 end
 
@@ -123,4 +137,4 @@ get '/patrons/edit_patron' do
   erb :edit_patron
 end
 
-# binding.pry
+#  binding.pry
