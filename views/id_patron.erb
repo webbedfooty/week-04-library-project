@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Add New Patron</title>
+<title>Patron <%=@patrons.id%> </title>
 
 </head>
 <body>
@@ -13,11 +13,14 @@
 <a href="/patrons">Patrons  /   </a>
 <a href="/">Back to Main Menu</a></p>
 <p></p>
-<h2>Add New Patron</h2>
 <p></p>
+<ul>
+<h2>Patron <%=@patrons.id%></h2>
+<p>Name: <%=@patrons.name%></p>
+<p>Email: <%=@patrons.email%></p>
 
-<form action="/patrons" method= "post" >
-	Name: 	<input type="text" name = "name"></br>
-	Email: <input type="text" name = "email"></br>
-	<input type="submit" value="Submit New Staff Patron">
-</form>
+<a href="/patrons/<%=@patrons.id%>/edit_patron"> Edit A Patron</a>
+</ul>
+
+</body>
+</html>

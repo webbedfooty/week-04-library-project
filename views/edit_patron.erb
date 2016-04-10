@@ -15,7 +15,14 @@
 <p></p>
 <h2>Edit a Patron</h2>
 <p></p>
-# link goes here
+
+<h3> Edit: <%= @patron.name %></h3>
+
+<form action="/patrons/<%= @patron.id %>" method= "post" >
+	Name: 	<input type="text" name = "name" 	value = "<%= @patron.name%>" > </br>
+	Email: <input type="text" name = "email" 	value = "<%= @patron.email%>" > </br>
+	<input type="submit" value="Submit Edit to <%= @patron.name%>" >
+</form>
 
 </body>
 </html>

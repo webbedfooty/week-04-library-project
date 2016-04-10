@@ -189,16 +189,47 @@ get '/patrons' do
   erb :patrons_menu
 end
 
-get '/patrons/list_of_patrons' do
-  erb :list_of_patrons
-end
-
+# New 1 and 2 of 6
 get '/patrons/add_new_patron' do
+  @patron = Patron.new
   erb :add_new_patron
 end
 
-get '/patrons/edit_patron' do
+post '/patrons' do
+  @patron = Patron.new(params)
+  if @patron.save
+    redirect to("/patrons/list_of_patrons")
+  else
+    erb :add_new_patron
+  end
+end
+
+# Index 3 of 6
+get '/patrons/list_of_patrons' do
+  @patrons = Patron.all
+  erb :list_of_patrons
+end
+
+# Edit 4 and 5 of 6
+get '/patrons/:id/edit_patron' do
+    @patron = Patron.find_by_id(params['id'])
   erb :edit_patron
+end
+
+post '/patrons/:id' do
+  @patron = Patron.find_by_id(params['id'])
+  if @patron.update_attributes(name: params['name'],
+      email: params['email'])
+    redirect to("/patrons/#{@patron.id}")
+  else
+    erb :edit_patron
+  end
+end
+
+# Show 6 of 6
+get '/patrons/:id' do
+  @patrons = Patron.find_by_id(params['id'])
+  erb :id_patron
 end
 
 #  binding.pry

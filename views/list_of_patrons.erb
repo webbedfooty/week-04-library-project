@@ -15,8 +15,15 @@
 <p></p>
 <h2>List of Patrons</h2>
 <p></p>
-# link or a list
+<ul>
+  <% @patrons.each do |p| %>
+    <li><a href="/patrons/<%=p.id%>"Name # <%=p.id%></br><%=p.name%></a>
+    </br><%=p.email%></br></li>
+  <% end %>
+</ul>
 
+
+<p><a href="/patrons/add_new_patron">Add New Patron</a></p>
 
 </body>
 </html>
