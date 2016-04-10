@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Add New Staff Member</title>
+<title>Staff Member <%=@staff_members.id%> </title>
 
 </head>
 <body>
@@ -13,16 +13,14 @@
 <a href="/patrons">Patrons  /   </a>
 <a href="/">Back to Main Menu</a></p>
 <p></p>
-<h2>Add New Staff Member</h2>
 <p></p>
+<ul>
+<h2>Staff Member <%=@staff_members.id%></h2>
+<p>Name: <%=@staff_members.name%></p>
+<p>Email: <%=@staff_members.email%></p>
 
-<form action="/staff_members" method= "post" >
-	Name: 	<input type="text" name = "name"></br>
-	Email: <input type="text" name = "email"></br>
-	<input type="submit" value="Submit New Staff Member">
-</form>
-
-
+<a href="/staff_members/<%=@staff_members.id%>/edit_staff_member"> Edit A Staff Member</a>
+</ul>
 
 </body>
 </html>

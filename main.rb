@@ -19,16 +19,13 @@ get '/libraries' do
   erb :libraries_menu
 end
 
-get '/libraries/list_of_staff_members' do
-  erb :list_of_staff_members
+# Yet to be implemented
+get '/libraries/reassign_book' do
+  erb :reassign_book
 end
 
 get '/libraries/reassign_staff_member' do
   erb :reassign_staff_member
-end
-
-get '/libraries/reassign_book' do
-  erb :reassign_book
 end
 
 # New 1 and 2 of 6
@@ -74,13 +71,13 @@ get '/libraries/:id' do
   erb :id_library
 end
 
-
 ######################################################### Books
 #   Books                 ############################### Books
 get '/books' do
   erb :books_menu
 end
 
+# Yet to be implemented
 get '/books/check_out_books' do
   erb :check_out_books
 end
@@ -128,13 +125,56 @@ get '/books/:id' do
   erb :id_book
 end
 
-
 ######################################################### Staff Members
 #   Staff Members         ############################### Staff Members
 get '/staff_members' do
   erb :staff_members_menu
 end
 
+# New 1 and 2 of 6
+get '/staff_members/add_new_staff_member' do
+  @staff_member = Staff_member.new
+  erb :add_new_staff_member
+end
+
+post '/staff_members' do
+  @staff_member = Staff_member.new(params)
+  if @staff_member.save
+    redirect to("/staff_members/list_of_staff_members")
+  else
+    erb :add_new_staff_member
+  end
+end
+
+# Index 3 of 6
+get '/staff_members/list_of_staff_members' do
+  @staff_members = Staff_member.all
+  erb :list_of_staff_members
+end
+
+# Edit 4 and 5 of 6
+get '/staff_members/:id/edit_staff_member' do
+    @staff_member = Staff_member.find_by_id(params['id'])
+  erb :edit_staff_member
+end
+
+post '/staff_members/:id' do
+  @staff_member = Staff_member.find_by_id(params['id'])
+  if @staff_member.update_attributes(name: params['name'],
+      email: params['email'])
+    redirect to("/staff_members/#{@staff_member.id}")
+  else
+    erb :edit_staff_member
+  end
+end
+
+# Show 6 of 6
+get '/staff_members/:id' do
+  @staff_members = Staff_member.find_by_id(params['id'])
+  erb :id_staff_member
+end
+
+# Yet to be implemented
 get '/staff_members/add_new_staff_member' do
   erb :add_new_staff_member
 end
@@ -143,7 +183,7 @@ get '/staff_members/edit_staff_member' do
   erb :edit_staff_member
 end
 
-###############################
+######################################################### Patrons
 #   Patrons               ############################### Patrons
 get '/patrons' do
   erb :patrons_menu

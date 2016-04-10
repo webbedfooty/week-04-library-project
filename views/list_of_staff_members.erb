@@ -15,8 +15,15 @@
 <p></p>
 <h2>List of Staff Members</h2>
 <p></p>
-# link or a list
+<ul>
+  <% @staff_members.each do |s| %>
+    <li><a href="/staff_members/<%=s.id%>"Name # <%=s.id%></br><%=s.name%></a>
+    </br>Email <%=s.email%></li>
+  <% end %>
+</ul>
 
+
+<p><a href="/staff_members/add_new_staff_member">Add New Staff Member</a></p>
 
 </body>
 </html>
