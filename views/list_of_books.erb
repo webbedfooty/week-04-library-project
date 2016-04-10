@@ -17,12 +17,13 @@
 <p></p>
 <ul>
   <% @books.each do |b| %>
-    <li><a href="/book/<%=b.id%>"Title # <%=b.id%></br><%=b.title%></a>
+    <li><a href="/books/<%=b.id%>"Title # <%=b.id%></br><%=b.title%></a>
     </br>Author <%=b.author%></br>ISBN <%=b.isbn%></li>
   <% end %>
 </ul>
 
 
+<p><a href="/books/add_new_book">Add New Book</a></p>
 
 </body>
 </html>

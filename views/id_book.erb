@@ -13,14 +13,15 @@
 <a href="/patrons">Patrons  /   </a>
 <a href="/">Back to Main Menu</a></p>
 <p></p>
-<h2>List of Books</h2>
 <p></p>
 <ul>
+<h2>Book <%=@books.id%></h2>
+<p>Title: <%=@books.title%></p>
+<p>Author: <%=@books.author%></p>
+<p>ISBN: <%=@books.isbn%></p>
 
-
-<p>Title<%=@books.title%></p>
-
-<p>Address: <%=@books.author%></p>
-<p>Phone Number: <%=@books.isbn%></p>
-
+<a href="/books/<%=@books.id%>/edit_book"> Edit A Book</a>
 </ul>
+
+</body>
+</html>

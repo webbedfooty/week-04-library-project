@@ -13,7 +13,7 @@ get '/' do
   erb :main_menu
 end
 
-###############################
+######################################################### Libraries
 #   Libraries             ############################### Libraries
 get '/libraries' do
   erb :libraries_menu
@@ -31,7 +31,7 @@ get '/libraries/reassign_book' do
   erb :reassign_book
 end
 
-# New
+# New 1 and 2 of 6
 get '/libraries/add_new_library' do
   @library = Library.new
   erb :add_new_library
@@ -46,13 +46,13 @@ post '/libraries' do
   end
 end
 
-# Index
+# Index 3 of 6
 get '/libraries/list_of_libraries' do
   @libraries = Library.all
   erb :list_of_libraries
 end
 
-# Edit
+# Edit 4 and 5 of 6
 get '/libraries/:id/edit_library' do
     @library = Library.find_by_id(params['id'])
   erb :edit_library
@@ -68,14 +68,14 @@ post '/libraries/:id' do
   end
 end
 
-# Show
+# Show 6 of 6
 get '/libraries/:id' do
     @libraries = Library.find_by_id(params['id'])
   erb :id_library
 end
 
 
-###############################
+######################################################### Books
 #   Books                 ############################### Books
 get '/books' do
   erb :books_menu
@@ -85,27 +85,51 @@ get '/books/check_out_books' do
   erb :check_out_books
 end
 
+# New 1 and 2 of 6
 get '/books/add_new_book' do
+  @book = Book.new
   erb :add_new_book
 end
 
-get '/books/edit_book' do
-  erb :edit_book
+post '/books' do
+  @book = Book.new(params)
+  if @book.save
+    redirect to("/books/list_of_books")
+  else
+    erb :add_new_book
+  end
 end
 
-# Show
-get '/book/:id' do
-  @books = Book.find_by_id(params['id'])
-  erb :id_book
-end
-
-# Index
+# Index 3 of 6
 get '/books/list_of_books' do
   @books = Book.all
   erb :list_of_books
 end
 
-###############################
+# Edit 4 and 5 of 6
+get '/books/:id/edit_book' do
+    @book = Book.find_by_id(params['id'])
+  erb :edit_book
+end
+
+post '/books/:id' do
+  @book = Book.find_by_id(params['id'])
+  if @book.update_attributes(title: params['title'],
+      author: params['author'], isbn: params['isbn'])
+    redirect to("/books/#{@book.id}")
+  else
+    erb :edit_book
+  end
+end
+
+# Show 6 of 6
+get '/books/:id' do
+  @books = Book.find_by_id(params['id'])
+  erb :id_book
+end
+
+
+######################################################### Staff Members
 #   Staff Members         ############################### Staff Members
 get '/staff_members' do
   erb :staff_members_menu

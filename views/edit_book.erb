@@ -15,7 +15,15 @@
 <p></p>
 <h2>Edit a Book</h2>
 <p></p>
-# list or link
+
+<h3> Edit: <%= @book.title %></h3>
+
+<form action="/books/<%= @book.id %>" method= "post" >
+	Title: 	<input type="text" name = "title" 	value = "<%= @book.title%>" > </br>
+	Author: <input type="text" name = "author" 	value = "<%= @book.author%>" > </br>
+	ISBN: 	<input type="text" name = "isbn" 		value = "<%= @book.isbn%>" > </br>
+	<input type="submit" value="Submit Edit to <%= @book.title%>" >
+</form>
 
 </body>
 </html>
