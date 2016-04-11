@@ -16,13 +16,13 @@ end
 ######################################################### Libraries
 #   Libraries             ############################### Libraries
 get '/libraries' do
-  erb :libraries_menu
+  erb :"libraries/libraries_menu"
 end
 
 # New 1 and 2 of 6
 get '/libraries/add_new_library' do
   @library = Library.new
-  erb :add_new_library
+  erb :"libraries/add_new_library"
 end
 
 post '/libraries' do
@@ -30,20 +30,20 @@ post '/libraries' do
   if @library.save
     redirect to("/libraries/list_of_libraries")
   else
-    erb :add_new_library
+    erb :"libraries/add_new_library"
   end
 end
 
 # Index 3 of 6
 get '/libraries/list_of_libraries' do
   @libraries = Library.all
-  erb :list_of_libraries
+  erb :"libraries/list_of_libraries"
 end
 
 # Edit 4 and 5 of 6
 get '/libraries/:id/edit_library' do
     @library = Library.find_by_id(params['id'])
-  erb :edit_library
+  erb :"libraries/edit_library"
 end
 
 post '/libraries/:id' do
@@ -52,26 +52,26 @@ post '/libraries/:id' do
       address: params['address'], phone_number: params['phone_number'])
     redirect to("/libraries/#{@library.id}")
   else
-    erb :edit_library
+    erb :"libraries/edit_library"
   end
 end
 
 # Show 6 of 6
 get '/libraries/:id' do
     @libraries = Library.find_by_id(params['id'])
-  erb :id_library
+  erb :"libraries/id_library"
 end
 
 ######################################################### Books
 #   Books                 ############################### Books
 get '/books' do
-  erb :books_menu
+  erb :"books/books_menu"
 end
 
 # New 1 and 2 of 6
 get '/books/add_new_book' do
   @book = Book.new
-  erb :add_new_book
+  erb :"books/add_new_book"
 end
 
 post '/books' do
@@ -79,20 +79,20 @@ post '/books' do
   if @book.save
     redirect to("/books/list_of_books")
   else
-    erb :add_new_book
+    erb :"books/add_new_book"
   end
 end
 
 # Index 3 of 6
 get '/books/list_of_books' do
   @books = Book.all
-  erb :list_of_books
+  erb :"books/list_of_books"
 end
 
 # Edit 4 and 5 of 6
 get '/books/:id/edit_book' do
     @book = Book.find_by_id(params['id'])
-  erb :edit_book
+  erb :"books/edit_book"
 end
 
 post '/books/:id' do
@@ -101,26 +101,26 @@ post '/books/:id' do
       author: params['author'], isbn: params['isbn'])
     redirect to("/books/#{@book.id}")
   else
-    erb :edit_book
+    erb :"books/edit_book"
   end
 end
 
 # Show 6 of 6
 get '/books/:id' do
   @books = Book.find_by_id(params['id'])
-  erb :id_book
+  erb :"books/id_book"
 end
 
 ######################################################### Staff Members
 #   Staff Members         ############################### Staff Members
 get '/staff_members' do
-  erb :staff_members_menu
+  erb :"staff_members/staff_members_menu"
 end
 
 # New 1 and 2 of 6
 get '/staff_members/add_new_staff_member' do
   @staff_member = Staff_member.new
-  erb :add_new_staff_member
+  erb :"staff_members/add_new_staff_member"
 end
 
 post '/staff_members' do
@@ -128,20 +128,20 @@ post '/staff_members' do
   if @staff_member.save
     redirect to("/staff_members/list_of_staff_members")
   else
-    erb :add_new_staff_member
+    erb :"staff_members/add_new_staff_member"
   end
 end
 
 # Index 3 of 6
 get '/staff_members/list_of_staff_members' do
   @staff_members = Staff_member.all
-  erb :list_of_staff_members
+  erb :"staff_members/list_of_staff_members"
 end
 
 # Edit 4 and 5 of 6
 get '/staff_members/:id/edit_staff_member' do
     @staff_member = Staff_member.find_by_id(params['id'])
-  erb :edit_staff_member
+  erb :"staff_members/edit_staff_member"
 end
 
 post '/staff_members/:id' do
@@ -150,27 +150,27 @@ post '/staff_members/:id' do
       email: params['email'])
     redirect to("/staff_members/#{@staff_member.id}")
   else
-    erb :edit_staff_member
+    erb :"staff_members/edit_staff_member"
   end
 end
 
 # Show 6 of 6
 get '/staff_members/:id' do
   @staff_members = Staff_member.find_by_id(params['id'])
-  erb :id_staff_member
+  erb :"staff_members/id_staff_member"
 end
 
 
 ######################################################### Patrons
 #   Patrons               ############################### Patrons
 get '/patrons' do
-  erb :patrons_menu
+  erb :"patrons/patrons_menu"
 end
 
 # New 1 and 2 of 6
 get '/patrons/add_new_patron' do
   @patron = Patron.new
-  erb :add_new_patron
+  erb :"patrons/add_new_patron"
 end
 
 post '/patrons' do
@@ -178,20 +178,20 @@ post '/patrons' do
   if @patron.save
     redirect to("/patrons/list_of_patrons")
   else
-    erb :add_new_patron
+    erb :"patrons/add_new_patron"
   end
 end
 
 # Index 3 of 6
 get '/patrons/list_of_patrons' do
   @patrons = Patron.all
-  erb :list_of_patrons
+  erb :"patrons/list_of_patrons"
 end
 
 # Edit 4 and 5 of 6
 get '/patrons/:id/edit_patron' do
     @patron = Patron.find_by_id(params['id'])
-  erb :edit_patron
+  erb :"patrons/edit_patron"
 end
 
 post '/patrons/:id' do
@@ -200,14 +200,14 @@ post '/patrons/:id' do
       email: params['email'])
     redirect to("/patrons/#{@patron.id}")
   else
-    erb :edit_patron
+    erb :"patrons/edit_patron"
   end
 end
 
 # Show 6 of 6
 get '/patrons/:id' do
   @patrons = Patron.find_by_id(params['id'])
-  erb :id_patron
+  erb :"patrons/id_patron"
 end
 
 #  binding.pry
