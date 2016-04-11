@@ -19,15 +19,6 @@ get '/libraries' do
   erb :libraries_menu
 end
 
-# Yet to be implemented
-get '/libraries/reassign_book' do
-  erb :reassign_book
-end
-
-get '/libraries/reassign_staff_member' do
-  erb :reassign_staff_member
-end
-
 # New 1 and 2 of 6
 get '/libraries/add_new_library' do
   @library = Library.new
@@ -75,11 +66,6 @@ end
 #   Books                 ############################### Books
 get '/books' do
   erb :books_menu
-end
-
-# Yet to be implemented
-get '/books/check_out_books' do
-  erb :check_out_books
 end
 
 # New 1 and 2 of 6
@@ -174,14 +160,6 @@ get '/staff_members/:id' do
   erb :id_staff_member
 end
 
-# Yet to be implemented
-get '/staff_members/add_new_staff_member' do
-  erb :add_new_staff_member
-end
-
-get '/staff_members/edit_staff_member' do
-  erb :edit_staff_member
-end
 
 ######################################################### Patrons
 #   Patrons               ############################### Patrons
